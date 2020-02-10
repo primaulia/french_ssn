@@ -22,6 +22,7 @@ def french_ssn_info(ssn)
 
   # check mob
   # need to use Date::MONTHNAMES
+  # assumed to be below year 2000
   mob = Date::MONTHNAMES[match_data[:mob].to_i]
   
   # department code
