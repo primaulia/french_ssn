@@ -8,17 +8,27 @@ def french_ssn_info(ssn)
 
   # decompose the string via regex DONE
   # use regex method match to pull each info out
+  match_data = ssn.match(pattern)
+
   # gender
+  if match_data[:gender] == "1"
+    gender = "man"
+  else
+    gender = "woman"
+  end
+
   # yob
+  yob = "19#{match_data[:yob]}"
+
   # mob
-    # need to Date::MONTHNAMES
+  mob = Date::MONTHNAMES[match_data[:mob].to_i]
+  
+  # need to Date::MONTHNAMES
   # department code
-    # p YAML.load_file('data/french_departments.yml')
 
+  dept = YAML.load_file('data/french_departments.yml')[match_data[:dept]]
+  # puts dept  
+  # p YAML.load_file('data/french_departments.yml')
 
-
-
+  puts "a #{gender}, born in #{mob}, #{yob} in #{dept}."
 end
-
-french_ssn_info("1 84 12 76 451 089 46")
-# "a man, born in December, 1984 in Seine-Maritime."
