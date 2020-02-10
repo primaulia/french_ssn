@@ -10,22 +10,21 @@ def french_ssn_info(ssn)
   # use regex method match to pull each info out
   match_data = ssn.match(pattern)
 
-  # gender
+  # check gender
   if match_data[:gender] == "1"
     gender = "man"
   else
     gender = "woman"
   end
 
-  # yob
+  # check yob
   yob = "19#{match_data[:yob]}"
 
-  # mob
+  # check mob
+  # need to use Date::MONTHNAMES
   mob = Date::MONTHNAMES[match_data[:mob].to_i]
   
-  # need to Date::MONTHNAMES
   # department code
-
   dept = YAML.load_file('data/french_departments.yml')[match_data[:dept]]
   # puts dept  
   # p YAML.load_file('data/french_departments.yml')
