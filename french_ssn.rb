@@ -39,7 +39,6 @@ def french_ssn_info(ssn)
   else
     return "The number is invalid"
   end
-
 end
 
 
